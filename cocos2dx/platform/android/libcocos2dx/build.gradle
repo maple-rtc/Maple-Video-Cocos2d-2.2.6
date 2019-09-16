@@ -1,0 +1,35 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion buildConfig.compileSdk
+//   buildToolsVersion "28.0.3"
+
+    defaultConfig {
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.targetSdk
+//        versionCode 1
+//        versionName "1.0"
+    }
+
+    sourceSets.main {
+        aidl.srcDir "../java/src"
+        java.srcDir "../java/src"
+        manifest.srcFile "AndroidManifest.xml"
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: '../java/libs', include: ['*.jar'])
+    implementation "com.android.support:support-v4:${versions.supportLibrary}"
+    implementation "com.android.support:appcompat-v7:${versions.appcompatLibrary}"
+}

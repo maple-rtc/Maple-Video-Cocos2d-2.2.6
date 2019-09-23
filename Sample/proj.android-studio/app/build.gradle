@@ -112,6 +112,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':libcocos2dx')
+    implementation fileTree(include: ['*.jar'], dir: '../../BMGamingSDK/libs/Android')
     implementation "org.androidannotations:androidannotations-api:${versions.androidAnnotations}"
     implementation "com.android.support.constraint:constraint-layout:${versions.constraintLayout}"
     implementation "com.android.support:support-v4:${versions.supportLibrary}"

@@ -3,6 +3,22 @@
 
 #include "cocos2d.h"
 
+#define MAPLE_APP_ID <##>
+
+const struct
+{
+    char *name;
+    const int x;
+    const int y;
+}remotePosition[] =
+        {
+                {"",  2,  2},
+                {"",  3,  2},
+                {"",  2,  3},
+                {"",  3,  3}
+        };
+
+
 class HelloWorld : public cocos2d::CCLayer
 {
 public:
@@ -17,6 +33,20 @@ public:
     
     // implement the "static node()" method manually
     CREATE_FUNC(HelloWorld);
+
+public:
+
+    void RenderLocalView();
+    void RemoveLocalView();
+    void RenderRemoteView(const char* uid);
+    void RemoveRemoteView(const char* uid);
+
+
+private:
+
+    void * local_view_;
+    std::map<std::string, void*>   remote_views_;
+
 };
 
 #endif // __HELLOWORLD_SCENE_H__
